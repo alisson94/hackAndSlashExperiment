@@ -1,0 +1,22 @@
+<body>
+    <canvas></canvas>
+</body>
+<img src="./Idle.png">
+
+<script>
+    let canvas = document.querySelector('canvas')
+    let c = canvas.getContext('2d')
+    let img = document.querySelector('img')
+    canvas.width = 1000
+    canvas.height  = 500
+    
+    c.fillRect(0,0,canvas.width,canvas.height)
+    console.log(img)
+
+    img.addEventListener('onload', ()=>{
+        console.log(img)
+        c.drawImage(img, 0, 0, canvas.width,canvas.height)
+    })
+    
+
+</script>

@@ -41,6 +41,8 @@ class Sprite{
     }
 }
 
+
+
 class Fighter extends Sprite{
     constructor({
         position, 
@@ -84,6 +86,7 @@ class Fighter extends Sprite{
         this.framesHold = 12
         this.sprites = sprites
         this.death = false
+        this.lado = 'r'
 
         for(const sprite in this.sprites){
             sprites[sprite].image = new Image()
@@ -124,10 +127,12 @@ class Fighter extends Sprite{
             if(this.framesCurrent === this.sprites.death.framesMax -1){
                 this.death = true
             }
-            return}
-
+            return
+        }
         //attack sprite
         if(this.image === this.sprites.attack1.image && this.framesCurrent < this.sprites.attack1.framesMax -1) return
+        if(this.image === this.sprites.attack1L.image && this.framesCurrent < this.sprites.attack1L.framesMax -1) return
+
         //hit sprite
         if(this.image === this.sprites.takeHit.image && this.framesCurrent < this.sprites.takeHit.framesMax -1) return
 
@@ -206,7 +211,11 @@ class Fighter extends Sprite{
     }
 
     attack(){
-        this.switchSprite('attack1')
+        if(this.lado === 'r'){
+            this.switchSprite('attack1')
+        }else{
+            this.switchSprite('attack1L')
+        }
         this.isAttacking = true
     }
 

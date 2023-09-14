@@ -6,8 +6,7 @@ canvas.height = 576
 
 let gravity = 0.2
 
-c.fillStyle = 'black'
-c.fillRect(0, 0, canvas.width, canvas.height)
+let lado = 'r'
 
 let background = new Sprite({
     position:{
@@ -181,14 +180,17 @@ function animate(){
 
     //player movement
     if(keys.a.pressed && player.position.x >= 0 && player.lastKey ==='a'){
-        player.switchSprite('runL')
+        player.switchSprite('run')
         player.velocity.x = -5
         player.attackBox.offset.x = -150
+        player.lado='l'
 
     }else if(keys.d.pressed && player.position.x + player.width <= canvas.width && player.lastKey ==='d'){
         player.switchSprite('run')
         player.velocity.x = 5
         player.attackBox.offset.x = 100
+        player.lado='r'
+
 
     }else{
         player.switchSprite('idle')
